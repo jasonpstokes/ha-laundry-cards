@@ -1,7 +1,7 @@
 # ha-laundry-cards
 Home Assistant Laundry Cards
 
-<img width=40% src="https://github.com/user-attachments/assets/83477a84-c60e-4524-a84a-b05ee8bc6888"/>  
+<img width=400px src="https://github.com/user-attachments/assets/83477a84-c60e-4524-a84a-b05ee8bc6888"/>  
 
 </br>  
 </br>  
@@ -14,13 +14,26 @@ Based on the amazing work by phrz [here](https://github.com/phrz/lg-washer-dryer
 1. Copy [files](https://github.com/jasonpstokes/ha-laundry-cards/tree/main/www) into /config/www 
 
 2. Add **7segment** font  
-> a) Edit Dashboard  
-> b) Click three dots  
-> c) click **Manage Resources**  
-> d) click **Add Resource**  
-> URL: /local/7segment.css  
-> Resource type: Styleshet  
+a) Edit Dashboard  
+b) Click three dots  
+c) click **Manage Resources**  
+d) click **Add Resource**  
+URL: /local/7segment.css  
+Resource type: Styleshet  
 </br>
+
+3. Create Template Helper for HH:MM remaining,
+
+e.g. Dishwasher Time Remaining  
+```yaml
+{% set m = ((as_datetime(states('sensor.dishwasher_remaining_time'),now()) - now()).total_seconds() //60)|int(0) + ((as_datetime(states('sensor.dishwasher_delay_starts_in'),now()) - now()).total_seconds() //60)|int(0) %}
+{{ -1 if m < 0 else ((m//60) ~ ':' ~ '{:0>2d}').format(m%60) }}
+```
+Availability template: 
+```yaml
+{{ states('sensor.dishwasher_remaining_time') not in ['unavailable', 'unknown', None] }}
+```
+</br>  
 
 # Cards
 
