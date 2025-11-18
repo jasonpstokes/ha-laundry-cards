@@ -1,11 +1,15 @@
 # ha-laundry-cards
 Home Assistant Laundry Cards
 
+<img width=40% src="https://github.com/user-attachments/assets/83477a84-c60e-4524-a84a-b05ee8bc6888"/>  
+
+</br>  
+</br>  
+
 Based on the amazing work by phrz [here](https://github.com/phrz/lg-washer-dryer-card).
 
 > [!TIP]
 > I'm using the LG Thinq integration plus a smart plug for my (dumb) Dryer  
-</br>
 
 1. Copy [files](https://github.com/jasonpstokes/ha-laundry-cards/tree/main/www) into /config/www 
 
